@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: previews
+  project: dev
   source:
     path: k8s
     repoURL: https://github.com/fgauna12/socks-shop-k8s.git
