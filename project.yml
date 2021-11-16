@@ -12,7 +12,7 @@ spec:
   destinations:
   - namespace: dev
     server: https://kubernetes.default.svc
-  - namespace: "pr-*"
+  - namespace: "dev-socks-shop"
     server: https://kubernetes.default.svc
   - namespace: argocd
     server: https://kubernetes.default.svc
