@@ -4,4 +4,4 @@ metadata:
   name: rollouts-demo
   labels:
     istio-injection=enabled
-
+  

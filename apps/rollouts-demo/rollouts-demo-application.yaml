@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rollouts-demo
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: dev
+  source:
+    path: examples/istio
+    repoURL: https://github.com/argoproj/rollouts-demo.git
+    targetRevision: HEAD
+    kustomize:
+      images:
+        - 'argoproj/rollouts-demo=argoproj/rollouts-demo:yellow'
+  destination:
+    namespace: "rollouts-demo"
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
