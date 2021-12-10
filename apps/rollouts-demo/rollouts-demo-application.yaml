@@ -9,7 +9,7 @@ spec:
   project: dev
   source:
     path: examples/istio
-    repoURL: https://github.com/argoproj/rollouts-demo.git
+    repoURL: https://github.com/fgauna12/rollouts-demo.git
     targetRevision: HEAD
     kustomize:
       images:
