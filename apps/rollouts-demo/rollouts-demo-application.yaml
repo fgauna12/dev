@@ -6,6 +6,11 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
+  ignoreDifferences:
+  - group: networking.istio.io
+    kind: VirtualService
+    jsonPointers:
+    - /spec/http/0
   project: dev
   source:
     path: examples/istio
@@ -13,11 +18,13 @@ spec:
     targetRevision: HEAD
     kustomize:
       images:
-        - 'argoproj/rollouts-demo=argoproj/rollouts-demo:yellow'
+        - 'argoproj/rollouts-demo=argoproj/rollouts-demo:blue'
   destination:
     namespace: "rollouts-demo"
     server: https://kubernetes.default.svc
   syncPolicy:
+    syncOptions:
+    - ApplyOutOfSyncOnly=true #For Istio
     automated:
       selfHeal: true
       prune: true
